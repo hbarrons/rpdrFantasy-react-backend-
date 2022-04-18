@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose, { mongo } from 'mongoose'
 
 const rosterSchema = new mongoose.Schema({
   queen1: {
@@ -31,6 +31,11 @@ const guessSchema = new mongoose.Schema({
   timestamps: true
 })
 
+const leagueSchema = new mongoose.Schema({
+  name: String,
+  leagueNo: Number,
+})
+
 const profileSchema = new mongoose.Schema({
   email: {type: String, required: true, lowercase: true, unique: true},
   name: String,
@@ -41,6 +46,10 @@ const profileSchema = new mongoose.Schema({
   favQueen: {
     type: String,
   },
+  isAdmin: {
+    type: Boolean,
+  },
+  league: [leagueSchema],
   roster: [rosterSchema],
   guessEpisode: [guessSchema],
 }, {
