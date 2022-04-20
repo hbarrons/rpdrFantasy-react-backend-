@@ -14,8 +14,10 @@ export function createLeague(req,res) {
   console.log("req.params.userId: ", req.params.userId)
   Profile.findById(req.params.userId)
   .then(profile => {
-    profile.league.push({name: req.body.leagueName, leagueNo: req.body.leagueNo})
+    profile.league.push({name: req.body.leagueName, leagueNo: req.body.leagueNo, isAdmin: true})
+    profile.isAdmin = true
     profile.save()
+    console.log(profile)
     res.status(201).json(profile)
   })
   .catch(err => {

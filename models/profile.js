@@ -34,6 +34,9 @@ const guessSchema = new mongoose.Schema({
 const leagueSchema = new mongoose.Schema({
   name: String,
   leagueNo: Number,
+  isAdmin: {
+    type: Boolean,
+  },
 })
 
 const profileSchema = new mongoose.Schema({
@@ -46,9 +49,7 @@ const profileSchema = new mongoose.Schema({
   favQueen: {
     type: String,
   },
-  isAdmin: {
-    type: Boolean,
-  },
+  score: Number,
   league: [leagueSchema],
   roster: [rosterSchema],
   guessEpisode: [guessSchema],
