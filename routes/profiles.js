@@ -11,5 +11,6 @@ const router = Router()
 router.use(decodeUserFromToken)
 router.get('/', checkAuth, profilesCtrl.index)
 router.post('/createleague/:userId', checkAuth, profilesCtrl.createLeague)
+router.post('/joinleague', checkAuth, profilesCtrl.joinLeague)
 
 export { router }
