@@ -23,3 +23,13 @@ export function index(req,res) {
     res.status(500).json(err)
   })
 }
+
+export function deleteQueen(req, res) {
+  console.log("req.params: ", req.params.queen)
+  Queen.findByIdAndDelete(req.params.queen)
+  .then(queen => res.json(queen))
+  .catch(err => {
+    console.log(err)
+    res.status(500).json(err)
+  })
+}
