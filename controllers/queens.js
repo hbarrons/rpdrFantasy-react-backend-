@@ -7,5 +7,19 @@ export function addQueen (req, res) {
     queen.eliminated = false
     queen.save()
     console.log("queen: ", queen)
+    res.status(201).json(queen)
+  })
+  .catch(err => {
+    console.log(err)
+    res.status(500).json(err)
+  })
+}
+
+export function index(req,res) {
+  Queen.find({})
+  .then(queens => res.json(queens))
+  .catch(err => {
+    console.log(err)
+    res.status(500).json(err)
   })
 }
