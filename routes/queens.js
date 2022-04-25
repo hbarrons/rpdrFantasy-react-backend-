@@ -8,3 +8,8 @@ const router = Router()
 
 
 /*---------- Protected Routes ----------*/
+router.use(decodeUserFromToken)
+router.post('/addqueen/:queen', checkAuth, queensCtrl.addQueen)
+
+
+export { router }
