@@ -7,7 +7,7 @@ const queenSchema = new mongoose.Schema({
   timestamps: true
 })
 
-const Queen = mongoose.model('Episode', queenSchema)
+const Queen = mongoose.model('Queen', queenSchema)
 
 export {
   Queen
