@@ -6,8 +6,11 @@ export function addQueen (req, res) {
     queen.name = req.params.queen
     queen.eliminated = false
     queen.save()
-    console.log("queen: ", queen)
-    res.status(201).json(queen)
+    Queen.find({})
+    .then(queens => {
+      console.log(queens)
+      res.status(201).json(queens)
+    })
   })
   .catch(err => {
     console.log(err)
@@ -17,7 +20,7 @@ export function addQueen (req, res) {
 
 export function index(req,res) {
   Queen.find({})
-  .then(queens => res.json(queens))
+  .then(queens => res.status(201).json(queens))
   .catch(err => {
     console.log(err)
     res.status(500).json(err)
@@ -25,11 +28,15 @@ export function index(req,res) {
 }
 
 export function deleteQueen(req, res) {
-  console.log("req.params: ", req.params.queen)
+  console.log("hit")
   Queen.findByIdAndDelete(req.params.queen)
-  .then(queen => res.json(queen))
   .catch(err => {
     console.log(err)
     res.status(500).json(err)
+  })
+  Queen.find({})
+  .then(queens => {
+    res.json(queens)
+    console.log(queens)
   })
 }
