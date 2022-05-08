@@ -30,13 +30,14 @@ export function index(req,res) {
 export function deleteQueen(req, res) {
   console.log("hit")
   Queen.findByIdAndDelete(req.params.queen)
-  .catch(err => {
-    console.log(err)
-    res.status(500).json(err)
-  })
+  .then(queen => console.log("deleted queen: ", queen))
   Queen.find({})
   .then(queens => {
     res.json(queens)
     console.log(queens)
+  })
+  .catch(err => {
+    console.log(err)
+    res.status(500).json(err)
   })
 }
