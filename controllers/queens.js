@@ -8,8 +8,7 @@ export function addQueen (req, res) {
     queen.save()
     Queen.find({})
     .then(queens => {
-      console.log(queens)
-      res.status(201).json(queens)
+      res.status(201).json({queens, queen})
     })
   })
   .catch(err => {
@@ -30,12 +29,13 @@ export function index(req,res) {
 export function deleteQueen(req, res) {
   console.log("hit")
   Queen.findByIdAndDelete(req.params.queen)
-  .then(queen => console.log("deleted queen: ", queen))
-  Queen.find({})
-  .then(queens => {
-    res.json(queens)
-    console.log(queens)
-  })
+  .then(
+    Queen.find({})
+    .then(queens => {
+      res.json(queens)
+      console.log(queens)
+    })
+  )
   .catch(err => {
     console.log(err)
     res.status(500).json(err)
