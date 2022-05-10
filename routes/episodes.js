@@ -9,7 +9,7 @@ const router = Router()
 
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
-router.get('/', episodesCtrl.indexEpisodes)
+router.get('/', checkAuth, episodesCtrl.indexEpisodes)
 router.post('/addepisode/:episode', checkAuth, episodesCtrl.addEpisode)
 
 

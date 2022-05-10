@@ -1,6 +1,7 @@
 import { Queen } from "../models/queen.js";
 
 export function addQueen (req, res) {
+  console.log("req.params: ", req.params)
   Queen.create(req.params)
   .then(queen => {
     queen.name = req.params.queen
