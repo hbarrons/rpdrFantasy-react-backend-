@@ -9,15 +9,28 @@ export function addEpisode (req, res) {
     episode.tops.push(req.body.top1, req.body.top2, req.body.top3)
     episode.bottoms.push(req.body.bottom1, req.body.bottom2, req.body.bottom3)
     episode.save()
-    console.log(episode)
     Episode.find({})
     .then(episodes => {
+      console.log(episodes)
       res.status(201).json(episodes)
     })
   })
 }
 
 export function indexEpisodes (req,res) {
-  console.log("req.body: ", req.body)
-  console.log("req.params: ", req.params)
+  Episode.find({})
+  .then(episodes => res.status(201).json(episodes))
+  .catch(err => {
+    console.log(err)
+    res.status(500).json(err)
+  })
+}
+
+export function deleteEpisode (req,res) {
+  console.log(req.params)
+  Episode.findByIdAndDelete(req.params.episode)
+  .then(
+    Episode.find({})
+    .then(episodes => res.status(201).json(episodes))
+  )
 }
