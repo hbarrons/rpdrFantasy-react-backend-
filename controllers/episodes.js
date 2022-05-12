@@ -12,7 +12,7 @@ export function addEpisode (req, res) {
     Episode.find({})
     .then(episodes => {
       console.log(episodes)
-      res.status(201).json(episodes)
+      res.status(201).json({episodes, episode})
     })
   })
 }
@@ -29,8 +29,9 @@ export function indexEpisodes (req,res) {
 export function deleteEpisode (req,res) {
   console.log(req.params)
   Episode.findByIdAndDelete(req.params.episode)
-  .then(
+  .then(episode => {
+    console.log(episode)
     Episode.find({})
     .then(episodes => res.status(201).json(episodes))
-  )
+  })
 }
