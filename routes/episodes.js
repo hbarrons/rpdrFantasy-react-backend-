@@ -10,7 +10,7 @@ const router = Router()
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
 router.get('/', checkAuth, episodesCtrl.indexEpisodes)
-router.post('/addepisode/:episode', checkAuth, episodesCtrl.addEpisode)
+router.post('/addepisode/:episode/:leagueNo', checkAuth, episodesCtrl.addEpisode)
 router.delete('/deleteepisode/:episode', checkAuth, episodesCtrl.deleteEpisode)
 
 

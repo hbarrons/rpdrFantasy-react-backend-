@@ -10,7 +10,7 @@ const router = Router()
 /*---------- Protected Routes ----------*/
 router.use(decodeUserFromToken)
 router.get('/', queensCtrl.index)
-router.post('/addqueen/:queen', checkAuth, queensCtrl.addQueen)
+router.post('/addqueen/:queen/:leagueNo', checkAuth, queensCtrl.addQueen)
 router.delete('/deletequeen/:queen', checkAuth, queensCtrl.deleteQueen)
 
 
