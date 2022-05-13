@@ -42,4 +42,12 @@ export function joinLeague (req,res) {
   })
 }
 
+export function addToRoster (req,res) {
+  console.log(req.params)
+  Profile.findById(req.params.userId)
+  .then(profile => {
+    profile.roster.push(req.params.queen)
+    console.log(profile)
+  })
+}
 

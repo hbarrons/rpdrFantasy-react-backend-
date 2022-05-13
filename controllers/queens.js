@@ -57,6 +57,3 @@ export function eleminateQueen (req,res) {
   })
 }
 
-export function addToRoster (req,res) {
-  console.log(req.params)
-}
