@@ -56,3 +56,7 @@ export function eleminateQueen (req,res) {
     res.status(201).json(queen)
   })
 }
+
+export function addToRoster (req,res) {
+  console.log(req.params)
+}

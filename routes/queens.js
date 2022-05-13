@@ -13,6 +13,7 @@ router.get('/', queensCtrl.index)
 router.post('/addqueen/:queen/:leagueNo', checkAuth, queensCtrl.addQueen)
 router.delete('/deletequeen/:queen', checkAuth, queensCtrl.deleteQueen)
 router.post('/eliminatequeen/:queen', checkAuth, queensCtrl.eleminateQueen)
+router.post('/addtoroster/:queen', checkAuth, queensCtrl.addToRoster)
 
 
 export { router }
