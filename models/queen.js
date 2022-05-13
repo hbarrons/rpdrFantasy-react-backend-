@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 
 const queenSchema = new mongoose.Schema({
-  leaguNo: Number,
+  leagueNo: Number,
   name: String,
   eliminated: Boolean,
 }, {
