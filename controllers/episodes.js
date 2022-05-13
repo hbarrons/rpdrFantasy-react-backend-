@@ -7,6 +7,7 @@ export function addEpisode (req, res) {
     episode.number = req.body.episodeNum
     episode.winner = req.body.winner
     episode.loser = req.body.loser
+    episode.leagueNo = req.params.leagueNo
     episode.tops.push(req.body.top1, req.body.top2, req.body.top3)
     episode.bottoms.push(req.body.bottom1, req.body.bottom2, req.body.bottom3)
     episode.save()
