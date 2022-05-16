@@ -1,16 +1,7 @@
 import mongoose from 'mongoose'
 
 const rosterSchema = new mongoose.Schema({
-  queen1: {
-    type: String,
-  },
-  queen2: {
-    type: String,
-  },
-  queen3: {
-    type: String,
-  },
-  queen4: {
+  queen: {
     type: String,
   },
 })

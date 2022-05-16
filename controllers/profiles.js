@@ -43,11 +43,18 @@ export function joinLeague (req,res) {
 }
 
 export function addToRoster (req,res) {
-  console.log(req.params)
+  console.log(req.params.queen)
   Profile.findById(req.params.userId)
   .then(profile => {
-    profile.roster.push(req.params.queen)
-    console.log(profile)
+    profile.roster.push({
+      queen: req.params.queen
+    })
+    profile.save()
+    console.log(profile.roster)
   })
+}
+
+export function removeFromRoster (req, res) {
+  console.log(req.params)
 }
 
