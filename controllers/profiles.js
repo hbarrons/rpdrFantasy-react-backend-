@@ -56,5 +56,20 @@ export function addToRoster (req,res) {
 
 export function removeFromRoster (req, res) {
   console.log(req.params)
+  Profile.findById(req.params.userId)
+  .then(profile => {
+      profile.roster.map(queen => {
+        console.log(queen)
+        if (queen.queen === req.params.queen) {
+          queen.remove()
+        }
+      })
+      console.log(profile)
+      profile.save()
+      Profile.find({})
+      .then(profiles => {
+        res.status(201).json(profiles)
+      })
+  })
 }
 
