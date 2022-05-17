@@ -50,7 +50,11 @@ export function addToRoster (req,res) {
       queen: req.params.queen
     })
     profile.save()
-    console.log(profile.roster)
+    console.log(profile)
+    Profile.find({})
+    .then(profiles => {
+      res.status(201).json(profiles)
+    })
   })
 }
 
@@ -66,10 +70,18 @@ export function removeFromRoster (req, res) {
       })
       console.log(profile)
       profile.save()
-      Profile.find({})
-      .then(profiles => {
-        res.status(201).json(profiles)
-      })
   })
+  .then(
+    Profile.find({})
+    .then(profiles => {
+      console.log(profiles)
+      res.status(201).json(profiles)
+    })
+  )
+}
+
+export function makeGuess (req,res){
+  console.log(req.params)
+  console.log(req.body)
 }
 
