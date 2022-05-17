@@ -46,7 +46,6 @@ export function deleteQueen(req, res) {
 }
 
 export function eleminateQueen (req,res) {
-  console.log("hit")
   console.log(req.params)
   Queen.findById(req.params.queen)
   .then(queen => {
@@ -57,3 +56,13 @@ export function eleminateQueen (req,res) {
   })
 }
 
+export function undoElim (req,res) {
+  console.log("undo elim: ",req.params)
+  Queen.findById(req.params.queen)
+  .then(queen => {
+    queen.eliminated = false
+    queen.save()
+    console.log(queen)
+    res.status(201).json(queen)
+  })
+}
