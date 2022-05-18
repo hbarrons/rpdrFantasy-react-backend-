@@ -15,5 +15,6 @@ router.post('/joinleague', checkAuth, profilesCtrl.joinLeague)
 router.post('/addtoroster/:userId/:queen', checkAuth, profilesCtrl.addToRoster)
 router.delete('/removefromroster/:userId/:queen', checkAuth, profilesCtrl.removeFromRoster)
 router.post('/makeguess/:user', checkAuth, profilesCtrl.makeGuess)
+router.post('/updateguess/:user', checkAuth, profilesCtrl.updateGuess)
 
 export { router }

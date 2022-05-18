@@ -83,5 +83,38 @@ export function removeFromRoster (req, res) {
 export function makeGuess (req,res){
   console.log(req.params)
   console.log(req.body)
+  Profile.findById(req.params.user)
+  .then(profile => {
+    profile.guessEpisode.push({
+      queen1: req.body.queen1,
+      queen2: req.body.queen2,
+      episode: req.body.episodeNum
+    })
+    profile.save()
+    console.log(profile)
+    Profile.find({})
+    .then(profiles => {
+      res.status(201).json(profiles)
+    })
+  })
+}
+
+export function updateGuess (req,res){
+  console.log(req.params)
+  console.log(req.body)
+  Profile.findById(req.params.user)
+  .then(profile => {
+    profile.guessEpisode[profile.guessEpisode.length - 1] = {
+      queen1: req.body.queen1,
+      queen2: req.body.queen2,
+      episode: req.body.episodeNum
+    }
+    profile.save()
+    console.log(profile)
+    Profile.find({})
+    .then(profiles => {
+      res.status(201).json(profiles)
+    })
+  })
 }
 
