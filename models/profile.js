@@ -49,6 +49,10 @@ const profileSchema = new mongoose.Schema({
   league: [leagueSchema],
   roster: [rosterSchema],
   guessEpisode: [guessSchema],
+  totalScore: {
+    type: Number,
+    default: 0,
+  }
 }, {
   timestamps: true
 })

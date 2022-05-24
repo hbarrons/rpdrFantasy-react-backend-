@@ -125,10 +125,12 @@ export function submitScores (req,res) {
     console.log("sanity check", scoreInfo)
     Profile.findById(scoreInfo.profile)
     .then(profile => {
+      console.log("profile.totalScore: ", profile.totalScore)
       profile.score.push({
-        episode: req.params.episodenum,
-        score: scoreInfo.score,
+        episodeNum: req.params.episodenum,
+        score: scoreInfo.weeklyScore,
       })
+      profile.totalScore += scoreInfo.weeklyScore
       profile.save()
       console.log(profile)
     })
