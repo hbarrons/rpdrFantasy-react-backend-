@@ -30,6 +30,11 @@ const leagueSchema = new mongoose.Schema({
   },
 })
 
+const scoreSchema = new mongoose.Schema({
+  episodeNum: Number,
+  score: Number,
+})
+
 const profileSchema = new mongoose.Schema({
   email: {type: String, required: true, lowercase: true, unique: true},
   name: String,
@@ -40,7 +45,7 @@ const profileSchema = new mongoose.Schema({
   favQueen: {
     type: String,
   },
-  score: Number,
+  score: [scoreSchema],
   league: [leagueSchema],
   roster: [rosterSchema],
   guessEpisode: [guessSchema],

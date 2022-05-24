@@ -118,3 +118,8 @@ export function updateGuess (req,res){
   })
 }
 
+export function submitScores (req,res) {
+  console.log(req.params)
+  console.log(req.body)
+}
+
