@@ -121,5 +121,21 @@ export function updateGuess (req,res){
 export function submitScores (req,res) {
   console.log(req.params)
   console.log(req.body)
+  req.body.map(scoreInfo => {
+    console.log("sanity check", scoreInfo)
+    Profile.findById(scoreInfo.profile)
+    .then(profile => {
+      profile.score.push({
+        episode: req.params.episodenum,
+        score: scoreInfo.score,
+      })
+      profile.save()
+      console.log(profile)
+    })
+  })
+  Profile.find({})
+  .then(profiles => {
+    res.status(201).json(profiles)
+  })
 }
 

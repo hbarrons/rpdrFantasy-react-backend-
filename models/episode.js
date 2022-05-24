@@ -4,7 +4,6 @@ const episodeSchema = new mongoose.Schema({
   leagueNo: Number,
   number: {
     type: Number,
-    unique: true
   },
   winner: {
     type: String,
