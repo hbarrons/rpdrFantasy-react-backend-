@@ -17,5 +17,6 @@ router.delete('/removefromroster/:userId/:queen', checkAuth, profilesCtrl.remove
 router.post('/makeguess/:user', checkAuth, profilesCtrl.makeGuess)
 router.post('/updateguess/:user', checkAuth, profilesCtrl.updateGuess)
 router.post('/submitscores/:episodenum', checkAuth, profilesCtrl.submitScores)
+router.delete('/deletescores/:episodenum/:leaguenum', checkAuth, profilesCtrl.deleteScores)
 
 export { router }

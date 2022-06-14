@@ -130,7 +130,7 @@ export function submitScores (req,res) {
         episodeNum: req.params.episodenum,
         score: scoreInfo.weeklyScore,
       })
-      profile.totalScore += scoreInfo.weeklyScore
+      // profile.totalScore += scoreInfo.weeklyScore
       profile.save()
       console.log(profile)
     })
@@ -138,6 +138,18 @@ export function submitScores (req,res) {
   Profile.find({})
   .then(profiles => {
     res.status(201).json(profiles)
+  })
+}
+
+export function deleteScores (req,res) {
+  console.log("delete score", req.params)
+  console.log("delete score", req.body)
+  Profile.find({})
+  .then(profile => {
+    console.log("Delete Score: ", profile.league)
+    if (profile.league.leagueNo === req.params.leaguenum) {
+      console.log(profile.score)
+    }
   })
 }
 
