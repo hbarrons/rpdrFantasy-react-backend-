@@ -130,7 +130,7 @@ export function submitScores (req,res) {
         episodeNum: req.params.episodenum,
         score: scoreInfo.weeklyScore,
       })
-      // profile.totalScore += scoreInfo.weeklyScore
+      profile.totalScore += scoreInfo.weeklyScore
       profile.save()
     })
   })
@@ -141,6 +141,7 @@ export function submitScores (req,res) {
 }
 
 export function deleteScores (req,res) {
+  let weeklyScore = 0
   console.log("delete score", req.params)
   Profile.find({})
   .then(profile => {
@@ -149,8 +150,10 @@ export function deleteScores (req,res) {
         for (let j=0; j < profile[i].score.length; j++) {
           // console.log("score to delete", profile[i].score[j])
           if (profile[i].score[j].episodeNum === parseInt(req.params.episodenum)) {
+            console.log("score to delete", profile[i].score[j].score)
+            weeklyScore = profile[i].score[j].score
+            profile[i].totalScore -= weeklyScore 
             profile[i].score[j].remove()
-            console.log("score to delete", profile[i].score[j])
             // profile[i].score.save()
           }
         }
