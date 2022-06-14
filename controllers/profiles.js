@@ -62,14 +62,14 @@ export function removeFromRoster (req, res) {
   console.log(req.params)
   Profile.findById(req.params.userId)
   .then(profile => {
-      profile.roster.map(queen => {
-        console.log(queen)
-        if (queen.queen === req.params.queen) {
-          queen.remove()
-        }
-      })
-      console.log(profile)
-      profile.save()
+    profile.roster.map(queen => {
+      console.log(queen)
+      if (queen.queen === req.params.queen) {
+        queen.remove()
+      }
+    })
+    console.log(profile)
+    profile.save()
   })
   .then(
     Profile.find({})
@@ -132,7 +132,6 @@ export function submitScores (req,res) {
       })
       // profile.totalScore += scoreInfo.weeklyScore
       profile.save()
-      console.log(profile)
     })
   })
   Profile.find({})
@@ -143,13 +142,23 @@ export function submitScores (req,res) {
 
 export function deleteScores (req,res) {
   console.log("delete score", req.params)
-  console.log("delete score", req.body)
   Profile.find({})
   .then(profile => {
-    console.log("Delete Score: ", profile.league)
-    if (profile.league.leagueNo === req.params.leaguenum) {
-      console.log(profile.score)
+    for (let i=0; i<profile.length; i++) {
+      if (profile[i].league[0].leagueNo === parseInt(req.params.leaguenum)) {
+        for (let j=0; j < profile[i].score.length; j++) {
+          // console.log("score to delete", profile[i].score[j])
+          if (profile[i].score[j].episodeNum === parseInt(req.params.episodenum)) {
+            profile[i].score[j].remove()
+            console.log("score to delete", profile[i].score[j])
+            // profile[i].score.save()
+          }
+        }
+      }
+      profile[i].save()
     }
   })
+  // .then(profile => {
+  // })
 }
 
