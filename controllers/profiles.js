@@ -81,6 +81,7 @@ export function removeFromRoster (req, res) {
 }
 
 export function makeGuess (req,res){
+  console.log("MAKE GUESS SANITY CHECK")
   console.log(req.params)
   console.log(req.body)
   Profile.findById(req.params.user)
@@ -161,7 +162,17 @@ export function deleteScores (req,res) {
       profile[i].save()
     }
   })
-  // .then(profile => {
-  // })
+  Profile.find({})
+  .then(profiles => {
+    res.status(201).json(profiles)
+  })
+}
+
+export function makeAdmin (req,res) {
+  console.log("makeAdmin req.params: ", req.params)
+  Profile.findById(req.params.profileid)
+  .then(profile => {
+    console.log("makeAdmin profile: ", profile)
+  })
 }
 
