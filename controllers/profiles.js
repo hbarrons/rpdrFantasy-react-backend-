@@ -172,7 +172,13 @@ export function makeAdmin (req,res) {
   console.log("makeAdmin req.params: ", req.params)
   Profile.findById(req.params.profileid)
   .then(profile => {
-    console.log("makeAdmin profile: ", profile)
+    profile.league[0].isAdmin = true
+    profile.save()
+    console.log("makeAdmin profile isAdmin?: ", profile.league[0].isAdmin)
+  })
+  Profile.find({})
+  .then(profiles => {
+    res.status(201).json(profiles)
   })
 }
 
