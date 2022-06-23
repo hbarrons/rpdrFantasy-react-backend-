@@ -182,3 +182,17 @@ export function makeAdmin (req,res) {
   })
 }
 
+export function removeAdmin (req,res) {
+  console.log("makeAdmin req.params: ", req.params)
+  // Profile.findById(req.params.profileid)
+  // .then(profile => {
+  //   profile.league[0].isAdmin = false
+  //   profile.save()
+  //   console.log("removeAdmin profile isAdmin?: ", profile.league[0].isAdmin)
+  // })
+  // Profile.find({})
+  // .then(profiles => {
+  //   res.status(201).json(profiles)
+  // })
+}
+
