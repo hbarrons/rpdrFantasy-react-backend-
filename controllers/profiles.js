@@ -196,3 +196,8 @@ export function removeAdmin (req,res) {
   })
 }
 
+export function updateRoster (req,res) {
+  console.log(req.params)
+
+}
+
