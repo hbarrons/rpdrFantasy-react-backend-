@@ -36,7 +36,6 @@ export function deleteQueen(req, res) {
     Queen.find({})
     .then(queens => {
       res.json(queens)
-      console.log(queens)
     })
   })
   .catch(err => {
@@ -51,7 +50,6 @@ export function eleminateQueen (req,res) {
   .then(queen => {
     queen.eliminated = true
     queen.save()
-    console.log(queen)
     res.status(201).json(queen)
   })
 }
@@ -62,7 +60,6 @@ export function undoElim (req,res) {
   .then(queen => {
     queen.eliminated = false
     queen.save()
-    console.log(queen)
     res.status(201).json(queen)
   })
 }

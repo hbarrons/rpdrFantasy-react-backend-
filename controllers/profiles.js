@@ -62,7 +62,7 @@ export function removeFromRoster (req, res) {
   console.log(req.params)
   Profile.findById(req.params.userId)
   .then(profile => {
-    profile.roster.map(queen => {
+    profile.roster?.map(queen => {
       console.log(queen)
       if (queen.queen === req.params.queen) {
         queen.remove()
@@ -111,7 +111,6 @@ export function updateGuess (req,res){
       episode: req.body.episodeNum
     }
     profile.save()
-    console.log(profile)
     Profile.find({})
     .then(profiles => {
       res.status(201).json(profiles)
@@ -123,10 +122,8 @@ export function submitScores (req,res) {
   console.log(req.params)
   console.log(req.body)
   req.body.map(scoreInfo => {
-    console.log("sanity check", scoreInfo)
     Profile.findById(scoreInfo.profile)
     .then(profile => {
-      console.log("profile.totalScore: ", profile.totalScore)
       profile.score.push({
         episodeNum: req.params.episodenum,
         score: scoreInfo.weeklyScore,
@@ -198,6 +195,22 @@ export function removeAdmin (req,res) {
 
 export function updateRoster (req,res) {
   console.log(req.params)
-
+  Profile.find({})
+  .then(profiles => {
+    profiles.map(profile => {
+      if (profile.league[0].leagueNo === parseInt(req.params.leaguenum)) {
+        for (let i=0; i<profile.roster.length; i++) {
+          console.log(req.params.queen, profile.roster[i])
+          if (profile.roster[i].queen === req.params.queen) {
+            console.log("sanity check",profile.roster[i]._id, req.params.queen)
+            profile.roster.splice(i, 1)
+            console.log(profile.roster)
+          }
+        }
+        profile.save()
+      }
+      // console.log(profile.roster)
+    })
+  })
 }
 

@@ -20,6 +20,6 @@ router.post('/submitscores/:episodenum', checkAuth, profilesCtrl.submitScores)
 router.delete('/deletescores/:episodenum/:leaguenum', checkAuth, profilesCtrl.deleteScores)
 router.post('/makeadmin/:profileid', checkAuth, profilesCtrl.makeAdmin)
 router.post('/removeadmin/:profileid', checkAuth, profilesCtrl.removeAdmin)
-router.post('/updateroster/:queen', checkAuth, profilesCtrl.updateRoster)
+router.post('/updateroster/:queen/:leaguenum', checkAuth, profilesCtrl.updateRoster)
 
 export { router }
