@@ -209,8 +209,11 @@ export function updateRoster (req,res) {
         }
         profile.save()
       }
-      // console.log(profile.roster)
     })
+  })
+  Profile.find({})
+  .then(profiles => {
+    res.status(201).json(profiles)
   })
 }
 
