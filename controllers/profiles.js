@@ -228,3 +228,7 @@ export function weeklyDrop (req,res) {
   })
 }
 
+export function updateWeeklyDrop (req,res) {
+  console.log(req.params)
+}
+
