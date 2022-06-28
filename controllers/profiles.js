@@ -50,7 +50,6 @@ export function addToRoster (req,res) {
       queen: req.params.queen
     })
     profile.save()
-    console.log(profile)
     Profile.find({})
     .then(profiles => {
       res.status(201).json(profiles)
@@ -68,7 +67,6 @@ export function removeFromRoster (req, res) {
         queen.remove()
       }
     })
-    console.log(profile)
     profile.save()
   })
   .then(
@@ -218,6 +216,15 @@ export function updateRoster (req,res) {
 }
 
 export function weeklyDrop (req,res) {
-  console.log(req.params)
+  console.log("SANITY CHECK", req.params)
+  Profile.findById(req.params.user)
+  .then(profile => {
+    profile.weeklyDrop = true
+    profile.save()
+  })
+  Profile.find({})
+  .then(profiles => {
+    res.status(201).json(profiles)
+  })
 }
 
