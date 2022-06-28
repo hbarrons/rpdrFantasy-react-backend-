@@ -217,3 +217,7 @@ export function updateRoster (req,res) {
   })
 }
 
+export function weeklyDrop (req,res) {
+  console.log(req.params)
+}
+

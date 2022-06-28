@@ -21,5 +21,6 @@ router.delete('/deletescores/:episodenum/:leaguenum', checkAuth, profilesCtrl.de
 router.post('/makeadmin/:profileid', checkAuth, profilesCtrl.makeAdmin)
 router.post('/removeadmin/:profileid', checkAuth, profilesCtrl.removeAdmin)
 router.post('/updateroster/:queen/:leaguenum', checkAuth, profilesCtrl.updateRoster)
+router.post('/weeklydrop/:user', checkAuth, profilesCtrl.weeklyDrop)
 
 export { router }
