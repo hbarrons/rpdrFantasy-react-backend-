@@ -246,3 +246,7 @@ export function updateWeeklyDrop (req,res) {
   })
 }
 
+export function unlockRoster (req,res) {
+  console.log(req.params)
+}
+
