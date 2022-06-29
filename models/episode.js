@@ -2,8 +2,9 @@ import mongoose from 'mongoose'
 
 const episodeSchema = new mongoose.Schema({
   leagueNo: Number,
-  number: {
+  epNum: {
     type: Number,
+    unique: false,
   },
   winner: {
     type: String,

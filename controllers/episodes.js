@@ -4,7 +4,7 @@ export function addEpisode (req, res) {
   console.log(req.params)
   Episode.create(req.params)
   .then(episode => {
-    episode.number = req.body.episodeNum
+    episode.epNum = req.body.episodeNum
     episode.winner = req.body.winner
     episode.loser = req.body.loser
     episode.leagueNo = req.params.leagueNo

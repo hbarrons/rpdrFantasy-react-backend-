@@ -248,5 +248,14 @@ export function updateWeeklyDrop (req,res) {
 
 export function unlockRoster (req,res) {
   console.log(req.params)
+  Profile.findById(req.params.profileid)
+  .then(profile => {
+    profile.weeklyDrop = false
+    profile.save()
+  })
+  Profile.find({})
+  .then(profiles => {
+    res.status(201).json(profiles)
+  })
 }
 
