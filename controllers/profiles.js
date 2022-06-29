@@ -230,5 +230,19 @@ export function weeklyDrop (req,res) {
 
 export function updateWeeklyDrop (req,res) {
   console.log(req.params)
+  Profile.find({})
+  .then(profiles => {
+    profiles.map(profile => {
+      console.log(profile.league[0].leagueNo, req.params.leaguenum)
+      if (profile.league[0].leagueNo === parseInt(req.params.leaguenum)) {
+        profile.weeklyDrop = false
+        profile.save()
+      }
+    })
+  })
+  Profile.find({})
+  .then(profiles => {
+    res.status(201).json(profiles)
+  })
 }
 
